@@ -1,0 +1,537 @@
+!SESSION 2012-12-24 13:54:23.058 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 4 4 2012-12-24 16:06:21.509
+!MESSAGE Unable to find Action Set: org.chromium.debug.ui.ChromiumDebugActionSet
+!SESSION 2015-04-18 15:20:32.857 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-04-18 15:21:43.424
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:24:24.365
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:24:24.365
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.365
+!MESSAGE Software being installed: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.365
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:24:24.365
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.365
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.365
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:24:24.402
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:24:24.402
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.402
+!MESSAGE Software being installed: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.402
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:24:24.403
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.403
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:24:24.403
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:32:10.103
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:10.103
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.103
+!MESSAGE Software being installed: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.103
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:10.103
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.103
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.103
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:32:10.104
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:10.104
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.104
+!MESSAGE Software being installed: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.104
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:10.104
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.104
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:10.104
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:32:49.055
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:49.055
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.055
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.055
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:49.055
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.055
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.055
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:49.055
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.055
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.056
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:32:49.059
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:49.059
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.059
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.059
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:49.059
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.059
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.059
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:32:49.059
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.059
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:32:49.059
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:33:17.686
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:33:17.686
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.686
+!MESSAGE Software being installed: Java implementation of Git - optional Http support using Apache httpclient 3.7.0.201502260915-r (org.eclipse.jgit.http.apache.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.686
+!MESSAGE Missing requirement: Apache HttpComponents HttpClient OSGi bundle 4.1.3.v201209201135 (org.apache.httpcomponents.httpclient 4.1.3.v201209201135) requires 'package org.apache.commons.codec.binary 1.4.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:33:17.686
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.686
+!MESSAGE From: Java implementation of Git - optional Http support using Apache httpclient 3.7.0.201502260915-r (org.eclipse.jgit.http.apache.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.686
+!MESSAGE To: org.apache.httpcomponents.httpclient [4.1.3.v201209201135]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:33:17.688
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:33:17.688
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.688
+!MESSAGE Software being installed: Java implementation of Git - optional Http support using Apache httpclient 3.7.0.201502260915-r (org.eclipse.jgit.http.apache.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.688
+!MESSAGE Missing requirement: Apache HttpComponents HttpClient OSGi bundle 4.1.3.v201209201135 (org.apache.httpcomponents.httpclient 4.1.3.v201209201135) requires 'package org.apache.commons.codec.binary 1.4.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:33:17.688
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.688
+!MESSAGE From: Java implementation of Git - optional Http support using Apache httpclient 3.7.0.201502260915-r (org.eclipse.jgit.http.apache.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:17.688
+!MESSAGE To: org.apache.httpcomponents.httpclient [4.1.3.v201209201135]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:33:30.846
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:33:30.846
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:30.846
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:30.846
+!MESSAGE Missing requirement: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r) requires 'org.eclipse.mylyn.team_feature.feature.group 3.5.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:33:30.847
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:33:30.847
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:30.847
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:33:30.847
+!MESSAGE Missing requirement: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r) requires 'org.eclipse.mylyn.team_feature.feature.group 3.5.0' but it could not be found
+!SESSION 2015-04-18 16:44:29.801 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:47:23.487
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:47:23.487
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.487
+!MESSAGE "Eclipse Git Team Provider - Source Code" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.487
+!MESSAGE "Command Line Interface for Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.487
+!MESSAGE "Command Line Interface for Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.487
+!MESSAGE "Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.487
+!MESSAGE "Java implementation of Git - optional Java 7 libraries" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.487
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:23.487
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.487
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.487
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:23.487
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.487
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.487
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:23.487
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.487
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.487
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:47:23.497
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:47:23.497
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.497
+!MESSAGE "Eclipse Git Team Provider - Source Code" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.497
+!MESSAGE "Command Line Interface for Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.497
+!MESSAGE "Command Line Interface for Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.497
+!MESSAGE "Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.497
+!MESSAGE "Java implementation of Git - optional Java 7 libraries" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:23.497
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:23.497
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.497
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.497
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:23.497
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.497
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.498
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:23.498
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.498
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:23.498
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:47:40.316
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:47:40.317
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.317
+!MESSAGE "Command Line Interface for Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.317
+!MESSAGE "Command Line Interface for Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.317
+!MESSAGE "Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.317
+!MESSAGE "Java implementation of Git - optional Java 7 libraries" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.317
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:40.317
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.317
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.317
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:40.317
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.317
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.317
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:40.317
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.317
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.317
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:47:40.319
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:47:40.319
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.319
+!MESSAGE "Command Line Interface for Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.319
+!MESSAGE "Command Line Interface for Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.319
+!MESSAGE "Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.319
+!MESSAGE "Java implementation of Git - optional Java 7 libraries" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:40.319
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:40.319
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.319
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.319
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:40.319
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.319
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.320
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:40.320
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.320
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:40.320
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:47:59.538
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:47:59.539
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:59.539
+!MESSAGE "Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:59.539
+!MESSAGE "Java implementation of Git - optional Java 7 libraries" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:59.539
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:59.539
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.539
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.539
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:59.539
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.539
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.539
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:59.539
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.539
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.539
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:47:59.541
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:47:59.541
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:59.541
+!MESSAGE "Java implementation of Git" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:59.541
+!MESSAGE "Java implementation of Git - optional Java 7 libraries" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:47:59.541
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:59.541
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.541
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.541
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:59.541
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.541
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.541
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:47:59.541
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.541
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:47:59.541
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:48:12.596
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:48:12.596
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:48:12.596
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:12.597
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.597
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.597
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:12.597
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.597
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.597
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:12.597
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.597
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.597
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:48:12.598
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-18 16:48:12.599
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-18 16:48:12.599
+!MESSAGE "Java implementation of Git - Source Code" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:12.599
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.599
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.599
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:12.599
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.599
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.599
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:12.599
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.599
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:12.599
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:48:25.399
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:25.399
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.399
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.399
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:25.399
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.399
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.399
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:25.399
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.399
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.399
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-04-18 16:48:25.401
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:25.401
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.401
+!MESSAGE Software being installed: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.401
+!MESSAGE Missing requirement: Git Team Provider UI 3.7.0.201502260915-r (org.eclipse.egit.ui 3.7.0.201502260915-r) requires 'bundle org.eclipse.team.core [3.6.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:25.401
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.401
+!MESSAGE From: Eclipse Git Team Provider 3.7.0.201502260915-r (org.eclipse.egit.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.401
+!MESSAGE To: org.eclipse.egit.ui [3.7.0.201502260915-r]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-04-18 16:48:25.401
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.401
+!MESSAGE From: Eclipse Git Team Provider - Task focused interface 3.7.0.201502260915-r (org.eclipse.egit.mylyn.feature.group 3.7.0.201502260915-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-04-18 16:48:25.401
+!MESSAGE To: org.eclipse.egit.feature.group 3.7.0
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2015-04-18 17:27:56.357
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [Timed out while retrieving the attached javadoc for Component [in Component.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] ]
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:808)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1037)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:643)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:95)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:75)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:58)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:555)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1012 2015-04-18 17:27:56.361
+!MESSAGE Timed out while retrieving the attached javadoc for Component [in Component.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] 
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2015-04-18 17:27:56.927
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [Timed out while retrieving the attached javadoc for Container [in Container.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] ]
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:808)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1037)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:643)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:95)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:75)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:58)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:555)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1012 2015-04-18 17:27:56.928
+!MESSAGE Timed out while retrieving the attached javadoc for Container [in Container.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] 
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2015-04-18 17:28:04.348
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [Timed out while retrieving the attached javadoc for Component [in Component.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] ]
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:808)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1037)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:643)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:95)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:75)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:58)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:555)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1012 2015-04-18 17:28:04.349
+!MESSAGE Timed out while retrieving the attached javadoc for Component [in Component.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] 
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2015-04-18 17:28:06.373
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [Timed out while retrieving the attached javadoc for Component [in Component.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] ]
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:808)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1037)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:643)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:95)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:75)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:58)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:555)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1012 2015-04-18 17:28:06.373
+!MESSAGE Timed out while retrieving the attached javadoc for Component [in Component.class [in java.awt [in C:\Program Files\Java\jre7\lib\rt.jar]]] 
+!SESSION 2015-05-01 20:46:51.538 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-05-01 20:47:15.759
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

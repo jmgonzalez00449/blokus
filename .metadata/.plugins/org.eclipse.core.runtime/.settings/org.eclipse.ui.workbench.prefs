@@ -1,0 +1,6 @@
+#Sun Aug 18 10:51:04 CDT 2013
+ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc\tTorg.eclipse.jdt.ui.presentation
+org.eclipse.jdt.ui.editors.textfont=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+org.eclipse.jface.textfont=1|Consolas|24.0|0|WINDOWS|1|-32|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+eclipse.preferences.version=1
+ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.jdt.ui.PropertiesFileEditor.textfont

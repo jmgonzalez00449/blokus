@@ -1,0 +1,376 @@
+import java.awt.BasicStroke;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+
+
+public class Player extends JPanel implements Serializable,MouseListener {
+	
+	/* Values for defining dimensions of drawn shapes. */
+	int squareHeight = 10;
+	int squareWidth = 10;
+	int maxShapeSquares = 6;
+	int maxShapeHeight = maxShapeSquares * squareHeight;
+	int maxShapeWidth = maxShapeSquares * squareWidth;
+	int bottomOfPlayerLabel = 40;
+	
+	/* Current values for how shapes are lied out graphically. */
+	int numOfRows = 0;
+	int numOfColumns = 0;
+	
+	/* Values for selected shape. 
+	 * The new values are used so that the old box can be erased.
+	 * A less than 0 value for the Shape Number indicates none is selected. 
+	 */
+	Coordinate specificCoordinateSelected = new Coordinate(-1,-1);
+	int selectedShapeNum = -1;
+	int selectedColumnNum = 0;
+	int selectedRowNum = 0;
+	int newSelectedShapeNum = -1;
+	int newSelectedColumnNum = 0;
+	int newSelectedRowNum = 0;
+	
+	static final long serialVersionUID = 3;
+	
+	private ArrayList<Shape> remainingShapes;
+	private Color myColor;
+	
+	public Player(Color color) {
+		
+		/* Fill in the set of shapes. */
+		Shape.ShapeType shapeTypes[] = Shape.ShapeType.values();
+		remainingShapes = new ArrayList<Shape>();
+		myColor = color;
+		
+		for (int type = 0; type < shapeTypes.length; type++) {
+			remainingShapes.add(new Shape(shapeTypes[type],color));
+		}
+		
+		/* Add the listener for selections. */
+		addMouseListener(this);
+	}
+	
+	public Player( Player player ) {
+		remainingShapes = new ArrayList<Shape>(player.remainingShapes);
+		myColor = player.getColor();
+		
+		/* Add the listener for selections. */
+		addMouseListener(this);
+	}
+	
+	/*
+	 * Name: removeShape
+	 * 
+	 * Description: Removes the shape at a specific location in the Player's list of remaining shapes.
+	 * 
+	 * Arguments:	index	- the particular shape in the Player's list of remaining shapes.
+	 * 
+	 * Returns:	True if the index was valid. False otherwise.
+	 */
+	public boolean removeShape( int index ) {
+		
+		try {
+		
+			remainingShapes.remove(index);
+		
+		}
+		catch (IndexOutOfBoundsException e){
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/* Name:		getSelection
+	 * Description:	Returns this player's currently selected shape.
+	 * Returns:		This player's selected shape.		
+	 */
+	public int getSelection() {
+		return selectedShapeNum;
+	}
+	
+	public ArrayList<Shape> getRemainingShapes() {
+		
+		return remainingShapes;
+	}
+	
+	public Color getColor() {
+		
+		return myColor;
+	}
+	
+	public Dimension getPreferredSize() {
+		return new Dimension(150, 150);
+	}
+	
+	public void paintComponent( Graphics g ) {
+		super.paintComponent(g);
+		
+		drawRemainingShapes( (Graphics2D) g );
+		
+		drawSelectionBox( (Graphics2D) g );
+	}
+	
+	public void drawRemainingShapes( Graphics2D g ) {
+		
+		/* Adjust the size of the shapes based on the size of the panel. 
+		 * Use the smallest dimension for best appeareance. 
+		 */
+		if ( this.getHeight() > this.getWidth() ) {
+			squareHeight = this.getHeight()/50;
+			squareWidth = squareHeight;
+		}
+		else {
+			squareWidth = this.getWidth()/50;
+			squareHeight = squareWidth;
+		}
+		maxShapeHeight = maxShapeSquares * squareHeight;
+		maxShapeWidth = maxShapeSquares * squareWidth;
+		
+		g.setColor(java.awt.Color.BLACK);
+		g.fill(new Rectangle2D.Double(0,0,this.getWidth(),this.getHeight()));
+
+		/* Label the panel with the color of the player. */
+		Font font = new Font("Serif", Font.PLAIN, 40);
+		g.setFont(font);
+		g.setColor(colorToJavaColor(myColor));
+		g.drawString(colorToString(myColor) + ":", 0, bottomOfPlayerLabel-5);
+		
+		/* Calculate the rows/ columns that will fit in this panel. 
+		 * The number of rows is based on the height of this panel.
+		 * Then the number of columns is based on how many shapes can fit in a 
+		 * column and how many shapes there are.
+		 */
+		numOfRows = this.getHeight()/maxShapeHeight;
+		numOfColumns = ( (getRemainingShapes().size() - 1)/ numOfRows ) + 1;
+		
+		/* Start from row, column 0. */
+		int column = 0;
+		int row = 0;
+		
+		/* Move through the "shape slots", starting at the next column as the row fills up. 
+		 * NOTE: Need to always put the shapes underneath the Player label.
+		 */
+		for ( Shape shape : getRemainingShapes() ) {
+			
+			drawShape( g, shape, column*maxShapeWidth, (row*maxShapeHeight)+bottomOfPlayerLabel );
+			
+			/* Move to the next row OR to the next column, first row. */
+			row++;
+			if ( row == numOfRows ) {
+				row = 0;
+				column++;
+			}
+		}
+		
+	}
+	
+	/*
+	 * Name:		drawShape
+	 * Description:	Draws the shape given. Assumes (and requires) the origin is in the top left corner.
+	 * Arguments:	g		- Graphics to draw to
+	 * 				shape	- The shape to draw
+	 * 				xOrigin	- The left edge of the shape
+	 * 				yOrigin	- The top of the shape
+	 */
+	private void drawShape( Graphics2D g, Shape shape, int xOrigin, int yOrigin ) {
+		
+		g.setColor(colorToJavaColor(myColor));
+		g.setStroke(new BasicStroke(1));
+		
+		for ( Coordinate coordinate : shape.myCoordinates ) {
+			
+			g.fill(new Rectangle2D.Double(xOrigin+(coordinate.myX * squareWidth), 
+					yOrigin+(coordinate.myY * squareHeight), 
+					squareWidth, squareHeight));
+		}
+//		Color remainingShapes[][] = new Color[5][110]; /* Stores the grid of colors that will be displayed. */
+//		
+//		/* Initialize the grid to all 0's. */
+//		for ( int x = 0; x < 5; x++ ) {
+//			for ( int y = 0; y < 110; y++ ) {
+//				remainingShapes[x][y] = Color.NONE;
+//			}
+//		}
+//		
+//		/* Fill in the grid. Each shape gets a height of 5 spaces. Therefore a new shape starts every 5 lines. */
+//		int shapeNum = 0;
+//		for (Shape shape : getRemainingShapes()) {
+//			
+//			for (Coordinate coordinate : shape.myCoordinates) {
+//				remainingShapes[coordinate.myX][coordinate.myY + (shapeNum*5)] = coordinate.myColor;
+//			}
+//			
+//			shapeNum++;
+//		}
+//		
+//		/* Print the grid that was just filled in. */
+//		int squareHeight = 8;
+//		int squareWidth = 8;
+//		int maxShapeSquares = 5;
+//		int bottomOfPlayerLabel = 40;
+//		
+//		Font font = new Font("Serif", Font.PLAIN, 40);
+//		g.setFont(font);
+//		g.setColor(colorToJavaColor(myColor));
+//		g.drawString(colorToString(myColor) + ":", 0, bottomOfPlayerLabel-5);
+//		g.setStroke(new BasicStroke(1));
+//		for ( int y = 0; y < (getRemainingShapes().size() * maxShapeSquares); y++ ) {
+//			
+//			for ( int x = 0; x < maxShapeSquares; x++ ) {
+//				
+//				java.awt.Color drawColor = colorToJavaColor(remainingShapes[x][y]);
+//				if ( drawColor == java.awt.Color.white ) {
+//					continue;
+//				}
+//				
+//				g.setColor(drawColor);
+//				
+//				int xOrigin;	/* Where to start the block. */
+//				int yOrigin;
+//				
+//				/* Determine what column to use. A new column is used based on how many times 'y' has exceeded the panel height. */
+//				xOrigin = (x*squareWidth); /* Offset in column. */
+//				xOrigin += squareWidth*maxShapeSquares*((y*squareHeight)/(this.getHeight()-bottomOfPlayerLabel)); /* Start of column. */
+//				yOrigin = bottomOfPlayerLabel + ((y*squareHeight)%(this.getHeight()-bottomOfPlayerLabel));
+//				
+//				g.fill(new Rectangle2D.Double(xOrigin, yOrigin, squareWidth, squareHeight));
+//				
+//			}
+//			
+//		}
+	}
+	
+	private void drawSelectionBox( Graphics2D g ) {
+		
+//		/* Do not need to do anything if the selectedShape has not changed. */
+//		if ( newSelectedShapeNum < 0 || newSelectedShapeNum == selectedShapeNum ) {
+//			return;
+//		}
+//		
+//		/* Draw over the old selectionBox if there was one. */
+//		if ( selectedShapeNum >= 0 ) {
+//			g.setColor( java.awt.Color.BLACK );
+//			g.draw( new Rectangle2D.Double(selectedColumnNum*maxShapeWidth, 
+//					(selectedRowNum*maxShapeHeight)+bottomOfPlayerLabel, 
+//					maxShapeWidth, maxShapeHeight ));	
+//		}
+		
+		/* Assign the new selection to be the current selection. */
+//		selectedShapeNum = newSelectedShapeNum;
+//		selectedColumnNum = newSelectedColumnNum;
+//		selectedRowNum = newSelectedRowNum;
+		
+		
+		/* Draw the new selection if there is one. */
+		if ( selectedShapeNum >= 0 ) {
+			
+
+			
+			g.setColor( java.awt.Color.WHITE );
+			g.draw( new Rectangle2D.Double(selectedColumnNum*maxShapeWidth, 
+					selectedRowNum*maxShapeHeight+bottomOfPlayerLabel, 
+					maxShapeWidth, maxShapeHeight ));
+			
+			/* Draw a single dot for the selected coordinate. */
+			g.draw( new Rectangle2D.Double(specificCoordinateSelected.myX, 
+					specificCoordinateSelected.myY, 
+					squareWidth, squareHeight));
+		}
+		
+		return;
+		
+	}
+	
+	public void mouseClicked( MouseEvent clickEvent ) {
+	
+		/* Have the selected coordinate be the top left corner of a square. */
+		specificCoordinateSelected = new Coordinate(clickEvent.getX() - clickEvent.getX()%squareWidth, clickEvent.getY() - clickEvent.getY()%squareHeight, Color.WHITE);
+		
+		selectedColumnNum = clickEvent.getX() / maxShapeWidth;
+		selectedRowNum = ( clickEvent.getY() - bottomOfPlayerLabel) / maxShapeHeight;
+		
+		/* The shapes were layed out top to bottom and then left to right. */
+		selectedShapeNum = ( selectedColumnNum * numOfRows ) + selectedRowNum;
+		
+		if ( selectedShapeNum >= getRemainingShapes().size() || 
+				selectedColumnNum > numOfColumns || selectedRowNum > numOfRows ) {
+			
+			/* Indicate that no shape is selected. */
+			selectedShapeNum = -1;
+	
+		}
+		
+/* INTEND ON MOVING THE ROTATION TO ITS OWN FRAME !! */
+if ( SwingUtilities.isLeftMouseButton(clickEvent) ) { 
+	remainingShapes.get(selectedShapeNum).rotateClockwise();
+}
+else {
+	remainingShapes.get(selectedShapeNum).flip();
+}
+remainingShapes.get(selectedShapeNum).moveOriginToTopLeftCorner();
+/* REMOVE THIS!! */		
+
+		this.repaint();
+		
+//		System.out.println("Shape:"+selectedShapeNum );
+//		System.out.println("Column:"+selectedColumnNum);
+//		System.out.println("Row:"+selectedRowNum);
+//		System.out.println("X:"+clickEvent.getX());
+//		System.out.println("Y:"+clickEvent.getY());
+//		System.out.println("Columns:"+numOfColumns);
+//		System.out.println("Rows:"+numOfRows);
+		
+	}
+	
+	/* Satisfy the MouseListener function definitions. */
+	public void mousePressed( MouseEvent e ){}
+	public void mouseReleased( MouseEvent e ){}
+	public void mouseEntered( MouseEvent e ){}
+	public void mouseExited( MouseEvent e ){}
+
+	
+	public static String colorToString( Color color ) {
+		
+		switch ( color ) {
+		case BLUE:
+			return "BLUE";
+		case YELLOW:
+			return "YELLOW";
+		case RED:
+			return "RED";
+		case GREEN:
+			return "GREEN";
+		case NONE:
+		default:
+			return "NONE";
+		}
+	}
+	
+	public static java.awt.Color colorToJavaColor( Color color ) {
+		switch (color) {
+		case BLUE:
+			return java.awt.Color.BLUE;
+		case YELLOW:
+			return java.awt.Color.YELLOW;
+		case RED:
+			return java.awt.Color.RED;
+		case GREEN:
+			return java.awt.Color.GREEN;
+		case WHITE:
+			return java.awt.Color.WHITE;
+		default:
+			return java.awt.Color.WHITE;
+		}
+	}
+}

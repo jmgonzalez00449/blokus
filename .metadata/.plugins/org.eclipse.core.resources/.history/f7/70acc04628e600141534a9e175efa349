@@ -1,0 +1,367 @@
+import java.awt.BasicStroke;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
+
+
+
+public class Board extends JPanel implements Serializable,MouseListener{
+	
+	static final long serialVersionUID = 2;
+	
+	static final int BOARD_WIDTH = 20;
+	static final int BOARD_HEIGHT = 20;
+	
+	private class Tile implements Serializable {
+		public Color color;
+		
+		public Tile() {
+			color = Color.NONE;
+		}
+	}
+	
+	private boolean myIsNewEvent;
+	private Coordinate myLastClick;
+	private Tile myTiles[][];
+	
+	public Board() {
+		
+		setBorder(BorderFactory.createLineBorder(java.awt.Color.black));
+		
+		myTiles = new Tile[BOARD_WIDTH][BOARD_HEIGHT];
+		
+		for ( int x = 0; x < BOARD_WIDTH; x++ ) {
+			for ( int y = 0; y < BOARD_HEIGHT; y++ ) {
+				myTiles[x][y] = new Tile();
+			}
+		}
+		
+		addMouseListener(this);
+	}
+	
+	public Board( Board board ) {
+		
+		myTiles = new Tile[BOARD_WIDTH][BOARD_WIDTH];
+		
+		for ( int x = 0; x < BOARD_WIDTH; x++ ) {
+			for ( int y = 0; y < BOARD_HEIGHT; y++ ) {
+				myTiles[x][y] = new Tile(); 
+				myTiles[x][y].color = board.myTiles[x][y].color;
+			}
+		}
+		
+		addMouseListener(this);
+	}
+	
+	private boolean ValidateShapeLocation( Shape shape ) {
+		
+		boolean foundCorner = false;
+		
+		for ( Coordinate coord: shape.myCoordinates) {
+			
+			/* Check board location is empty and inbounds. */
+			if (getTileColor(coord,shape.myOrigin) != Color.NONE)
+					return false;
+			
+			/* Check neighboring pieces aren't the same color */
+			/* TODO: non-negative or translate negative values to the corner's of each color */
+			if (getTileColor(new Coordinate(coord,1,0),shape.myOrigin) == coord.myColor)
+				return false;
+			if (getTileColor(new Coordinate(coord,-1,0),shape.myOrigin) == coord.myColor)
+				return false;
+			if (getTileColor(new Coordinate(coord,0,1),shape.myOrigin) == coord.myColor)
+				return false;
+			if (getTileColor(new Coordinate(coord,0,-1),shape.myOrigin) == coord.myColor)
+				return false;
+			
+			/* Check for at least one corner. TODO make sure there's not an adjacent of the same color.
+			 * Perhaps the other check will be sure to return false if that happens. */
+			 
+			if (getTileColor(new Coordinate(coord,1,1),shape.myOrigin) == coord.myColor) {
+				foundCorner = true;
+			}
+			if (getTileColor(new Coordinate(coord,-1,1),shape.myOrigin) == coord.myColor)
+				foundCorner = true;
+			if (getTileColor(new Coordinate(coord,1,-1),shape.myOrigin) == coord.myColor)
+				foundCorner = true;
+			if (getTileColor(new Coordinate(coord,-1,-1),shape.myOrigin) == coord.myColor)
+				foundCorner = true;
+		}
+		return foundCorner;
+	}
+	
+	/*
+	 * Name:	addShape
+	 * 
+	 * Description:	Adds the shape to the location on the board, based on the shapes origin
+	 * 
+	 * Arguments:	shape	- The shape to add to the board (it's origin is used to know where to put it)
+	 * 
+	 * Returns:		true	- The shape could be placed as requested.
+	 * 				false	- The shape could NOT be placed because it is placed illegally.
+	 */
+	public boolean addShape( Shape shape ) {
+		
+		if ( !this.ValidateShapeLocation(shape) ) {
+			return false;
+		}
+		
+		for ( Coordinate coord: shape.myCoordinates) {
+			setTileColor(coord, shape.myOrigin);
+		}
+		
+		return true;
+	}
+	
+	/*
+	 * Name: shapeHasSpot
+	 * Description: Checks to see if there is at least one valid origin 
+	 * to place the shape. 
+	 */
+	public boolean shapeHasSpot( Shape shape ) {
+		
+		/* Try every possible origin */
+		for ( int x = 0; x < BOARD_WIDTH; x++ ) {
+			for ( int y = 0; y < BOARD_HEIGHT; y++ ) {
+				
+				shape.setOrigin(new Coordinate(x,y));
+				
+				if (this.ValidateShapeLocation(shape)){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	/* 
+	 * Name: getTileColor
+	 * 
+	 * Description: Returns the color at the origin + coordinate offset
+	 * 
+	 * Arguments: 	coord	- The offset from the origin used for calculating the location on the board.
+	 * 				origin	- Used as a base for calculating the location on the board
+	 * 
+	 * Returns:		The Color at the origin + offset location on the board. 
+	 */
+	private Color getTileColor(Coordinate coord, Coordinate origin) {
+		
+		/* Associate particular out of bounds locations for each color to allow first piece
+		 * (-1,-1) - Blue
+		 * (20,-1) - Yellow
+		 * (20,20) - Red
+		 * (-1,20) - Green
+		 */
+		if ( (coord.myX + origin.myX) == -1 ) {
+			if ( (coord.myY + origin.myY) == -1)
+				return Color.BLUE;
+			if ( (coord.myY + origin.myY) == BOARD_HEIGHT )
+				return Color.GREEN;
+		}
+		if ( (coord.myX + origin.myX) == BOARD_WIDTH ) {
+			if ( (coord.myY + origin.myY) == -1)
+				return Color.YELLOW;
+			if ( (coord.myY + origin.myY) == BOARD_HEIGHT )
+				return Color.RED;
+		}
+		
+		/* Any other out of bounds is an error. */
+		if ( (coord.myX + origin.myX < 0) || (coord.myX + origin.myX >= BOARD_WIDTH) )
+			return Color.OUT_OF_BOUNDS;
+		if ( (coord.myY + origin.myY < 0) || (coord.myY + origin.myY >= BOARD_HEIGHT) )
+			return Color.OUT_OF_BOUNDS;
+			
+		/* Get the board color. */
+		return myTiles[coord.myX + origin.myX][coord.myY + origin.myY].color;
+	}
+	
+	private void setTileColor(Coordinate coord, Coordinate origin) {
+		/* Any other out of bounds is an error. */
+		if ( (coord.myX + origin.myX < 0) || (coord.myX + origin.myX >= BOARD_WIDTH) ) {
+			System.out.println("SetTileColor had out of bounds x value:"+(coord.myX+origin.myX));
+			return;
+		}
+			
+		if ( (coord.myY + origin.myY < 0) || (coord.myY + origin.myY >= BOARD_HEIGHT) ) {
+			System.out.println("SetTileColor had out of bounds y value:"+(coord.myY+origin.myY));
+			return;
+		}	
+		
+		myTiles[coord.myX + origin.myX][coord.myY + origin.myY].color = coord.myColor;
+	}
+	
+	public void drawBoard() {
+		System.out.print("-----------------------------------------\n");
+		for( int y = 0; y < 20; y++ ) {
+			System.out.print("|");
+			for ( int x = 0; x < 20; x++ ) {
+				switch (myTiles[x][y].color) {
+				case NONE:
+					System.out.print(" ");
+					break;
+				case BLUE:
+					System.out.print("B");
+					break;
+				case YELLOW:
+					System.out.print("Y");
+					break;
+				case RED:
+					System.out.print("R");
+					break;
+				case GREEN:
+					System.out.print("G");
+					break;
+				default:
+					System.out.print(" ");
+				}
+				System.out.print("|");
+			}
+			System.out.println();
+			System.out.print("-----------------------------------------\n");
+		}
+	}
+	
+	public Dimension getPreferredSize() {
+		return new Dimension(400, 400);
+	}
+	
+	public void paintComponent( Graphics g ) {
+		super.paintComponent( g );
+		
+		drawBoard( (Graphics2D) g );
+	}
+	
+	public void drawBoard( Graphics2D g ) {
+		
+		int lineWidth = this.getWidth()/4/BOARD_WIDTH;
+		int lineHeight = this.getHeight()/4/BOARD_HEIGHT;
+		g.setStroke(new BasicStroke(lineWidth));
+		
+		/* Draw the vertical lines */
+		for ( int x = 0; x < (BOARD_WIDTH*this.getWidth()); x += (this.getWidth()/BOARD_WIDTH) ) {
+			g.draw(new Line2D.Double(x+(lineWidth/2), 0, x+(lineWidth/2), this.getHeight()));
+		}
+		
+		g.setStroke(new BasicStroke(lineHeight));
+		/* Draw the horizontal lines. */
+		for ( int y = 0; y < (BOARD_HEIGHT*this.getHeight()); y += (this.getHeight()/BOARD_HEIGHT) ) {
+			g.draw(new Line2D.Double(0, y+(lineHeight/2), this.getWidth(), y+(lineHeight/2)));
+		}
+		
+		/* The squares will take up 3/4 of the board and there are "Board Width/Height" squares across/down. 
+		 * Have to subtract the part of the next line to the right and below each square. 
+		 */
+		int squareWidth = this.getWidth()*3/4/BOARD_WIDTH;
+		int squareHeight = this.getHeight()*3/4/BOARD_HEIGHT;
+		
+		/* Draw each piece. 
+		 * Now, x and y are indexes into the board array. 
+		 */
+		g.setStroke(new BasicStroke(1));
+		for( int y = 0; y < BOARD_HEIGHT; y++ ) {
+			for ( int x = 0; x < BOARD_WIDTH; x++ ) {
+				
+				/* Determine what color to draw the rectangle. */
+				switch (myTiles[x][y].color) {
+				case BLUE:
+					g.setColor(java.awt.Color.BLUE);
+					break;
+				case YELLOW:
+					g.setColor(java.awt.Color.YELLOW);
+					break;
+				case RED:
+					g.setColor(java.awt.Color.RED);
+					break;
+				case GREEN:
+					g.setColor(java.awt.Color.GREEN);
+					break;
+				default:
+					/* No color to draw. */
+					continue;
+				}
+				
+				/* Draw the rectangle on the screen proportional to the screen. */
+				g.fill(new Rectangle2D.Double(x*(this.getWidth()/BOARD_WIDTH)+lineWidth, y*(this.getHeight()/BOARD_HEIGHT)+lineHeight, 
+						squareWidth, squareHeight));
+			}
+		}
+		
+		
+	}
+	
+	public int convertPixelXValueToBoardXValue( int pixelX ) {
+		
+		int boardX;
+	
+		/* Calculate the width of 1 block. */
+		int spaceWidth = this.getWidth()/BOARD_WIDTH;
+		
+		boardX = pixelX/spaceWidth;
+		
+		return boardX;
+	}
+	
+	public int convertPixelYValueToBoardYValue( int pixelY ) {
+		
+		int boardY;
+		
+		/* Calculate the width of 1 block. */
+		int spaceHeight = this.getHeight()/BOARD_HEIGHT;
+		
+		boardY = pixelY/spaceHeight;
+		
+		return boardY;
+	}
+	
+	/* Name:		isNewEvent()
+	 * Description:	Returns whether a new event has happened since the last check.
+	 * 
+	 */
+	public boolean isNewEvent() {
+		
+		/* If there has been a recent event then, clear it. */
+		if ( myIsNewEvent ) {
+			myIsNewEvent = false;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public Coordinate getLastClick() {
+		return myLastClick;
+	}
+	
+	public void mouseClicked( MouseEvent clickEvent ) {
+
+		myIsNewEvent = true;
+		
+		/* Calculate the width and height of 1 block. */
+		int blockWidth = this.getWidth()/BOARD_WIDTH;
+		int blockHeight = this.getHeight()/BOARD_HEIGHT;
+		 
+		myLastClick = new Coordinate(clickEvent.getX()/blockWidth, 
+				clickEvent.getY()/blockHeight);
+		return;
+	}
+	
+	/* Satisfy the MouseListener function definitions. */
+	
+	public void mousePressed( MouseEvent e ){}
+	public void mouseReleased( MouseEvent e ){}
+	public void mouseEntered( MouseEvent e ){}
+	public void mouseExited( MouseEvent e ){}
+	
+	
+}

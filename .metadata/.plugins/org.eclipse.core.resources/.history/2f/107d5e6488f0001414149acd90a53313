@@ -1,0 +1,803 @@
+
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.SpringLayout;
+import java.util.ArrayList;
+
+
+public class Blokus extends JFrame implements Serializable, ActionListener, MouseListener {
+	
+	static final long serialVersionUID = 4;
+	
+	Player blue;
+	Player yellow;
+	Player red;
+	Player green;
+	Player activePlayer;	/* Indicates who's turn it is. */
+	Board board;
+	int turnCounter;
+	TurnIndicator turnIndicator;
+	
+	/* Menu ITems. */
+	JMenuItem loadItem, saveItem;
+	
+	private Blokus() {
+		super();
+		
+		blue = new Player(Color.BLUE);
+		yellow = new Player(Color.YELLOW);
+		red = new Player(Color.RED);
+		green = new Player(Color.GREEN);
+		board = new Board();
+		
+		/* The first turn is blue. */
+		turnCounter = 0;
+		activePlayer = blue;
+		turnIndicator = new TurnIndicator(activePlayer.getColor());
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+//		GridBagLayout gridBag = new GridBagLayout();
+//		myFrame.getContentPane().setLayout(gridBag);
+//		GridBagConstraints gBagConstraints = new GridBagConstraints();
+		
+		
+		/* Add menu. */
+		JMenuBar menuBar = new JMenuBar();
+		
+		/* Build the file menu bar */
+		JMenu menu = new JMenu("File");
+		menuBar.add(menu);
+		
+		/* Add the save item. */
+		saveItem = new JMenuItem("Save");
+		menu.add(saveItem);
+		saveItem.addActionListener(this);
+		
+		/* Add the load item. */
+		loadItem = new JMenuItem("Load");
+		menu.add(loadItem);
+		loadItem.addActionListener(this);
+		
+		this.setJMenuBar(menuBar);
+		
+		setUpGUI();
+	}
+	
+	public void setUpGUI() {
+		
+		Container contentPane = this.getContentPane();
+		SpringLayout layout = new SpringLayout();
+		contentPane.setLayout( layout );
+		
+		/* Add the components to the screen. */
+		contentPane.add(blue);
+		contentPane.add(yellow);
+		contentPane.add(board);
+		contentPane.add(red);
+		contentPane.add(green);
+		contentPane.add(turnIndicator);
+		
+		
+		
+		/* Put the turn indicator at the top left corner. */
+		layout.putConstraint(SpringLayout.WEST, turnIndicator, 0, SpringLayout.WEST, contentPane );
+		layout.putConstraint(SpringLayout.NORTH, turnIndicator, 0, SpringLayout.NORTH, contentPane );
+		layout.putConstraint(SpringLayout.SOUTH, turnIndicator, 0, SpringLayout.NORTH, green );
+		layout.putConstraint(SpringLayout.EAST, turnIndicator, 0, SpringLayout.WEST, blue );
+		
+		/* Put the blue player in the top. */
+		layout.putConstraint(SpringLayout.WEST, blue, 0, SpringLayout.WEST, board );
+		layout.putConstraint(SpringLayout.NORTH, blue, 0, SpringLayout.NORTH, contentPane );
+		layout.putConstraint(SpringLayout.EAST, blue, 0, SpringLayout.WEST, yellow );
+		
+		/* Put the green player along the left column. */
+		layout.putConstraint(SpringLayout.WEST, green, 0, SpringLayout.WEST, contentPane );
+		layout.putConstraint(SpringLayout.NORTH, green, 0, SpringLayout.SOUTH, blue );
+		layout.putConstraint(SpringLayout.SOUTH, green, 0, SpringLayout.SOUTH, board );
+		
+		/* Put the board in the middle. */
+		layout.putConstraint(SpringLayout.WEST, board, 0, SpringLayout.EAST, green );
+		layout.putConstraint(SpringLayout.NORTH, board, 0, SpringLayout.SOUTH, blue );
+		
+		/* Put the yellow player along the right column. */
+		//layout.putConstraint(SpringLayout.EAST, red, 0, SpringLayout.EAST, contentPane);
+		layout.putConstraint(SpringLayout.NORTH, yellow, 0, SpringLayout.SOUTH, blue );
+		layout.putConstraint(SpringLayout.WEST, yellow, 0, SpringLayout.EAST, board );
+		layout.putConstraint(SpringLayout.SOUTH, yellow, 0, SpringLayout.SOUTH, board );
+		
+		/* Put the red player along the bottom */
+		layout.putConstraint(SpringLayout.NORTH, red, 0, SpringLayout.SOUTH, board);
+		//layout.putConstraint(SpringLayout.SOUTH, green, 0, SpringLayout.SOUTH, contentPane );
+		layout.putConstraint(SpringLayout.WEST, red, 0, SpringLayout.EAST, green );
+		layout.putConstraint(SpringLayout.EAST, red, 0, SpringLayout.EAST, board );
+		
+		/* Set the size of the frame. */
+		layout.putConstraint(SpringLayout.SOUTH, contentPane, 0, SpringLayout.SOUTH, red);
+		layout.putConstraint(SpringLayout.EAST, contentPane, 0, SpringLayout.EAST, yellow );
+		
+		
+//		/* Add Blue's pane at the top. */
+//		gBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+//		gBagConstraints.gridx = 0;
+//		gBagConstraints.gridy = 0;
+//		gBagConstraints.gridwidth = 4;
+//		gBagConstraints.weightx = 0.1;
+//		gBagConstraints.weighty = 0.1;
+//		gridBag.setConstraints(blue, gBagConstraints);
+//		myFrame.getContentPane().add( blue );
+//		
+//		/* Add Yellow's pane on the left. */
+//		
+//		gBagConstraints.fill = GridBagConstraints.VERTICAL;
+//		gBagConstraints.gridx = 0;
+//		gBagConstraints.gridy = 1;
+//		gBagConstraints.gridheight = 6;
+//		gBagConstraints.gridwidth = 1;
+//		gBagConstraints.weightx = 0.1;
+//		gBagConstraints.weighty = 0.1;
+//		gridBag.setConstraints(yellow, gBagConstraints);
+//		myFrame.getContentPane().add( yellow );
+//		
+//		/* Put the board in the middle. */
+//		gBagConstraints.fill = GridBagConstraints.BOTH;
+//		gBagConstraints.gridx = 1;
+//		gBagConstraints.gridy = 1;
+//		gBagConstraints.gridwidth = 2;
+//		gBagConstraints.gridheight = 2;
+//		gBagConstraints.weightx = 0.0;
+//		gBagConstraints.weighty = 0.0;
+//		myFrame.getContentPane().add( board, gBagConstraints );
+//		
+//		/* Put red on the right side. */
+//		gBagConstraints.fill = GridBagConstraints.VERTICAL;
+//		gBagConstraints.gridx = 4;
+//		gBagConstraints.gridy = 0;
+//		gBagConstraints.gridheight = 6;
+//		gBagConstraints.gridwidth = 1;
+//		gBagConstraints.weightx = 0.1;
+//		gBagConstraints.weighty = 0.1;
+//		gridBag.setConstraints( red, gBagConstraints );
+//		myFrame.getContentPane().add( red );
+////		
+////		/* Put Green on the bottom. */
+//		gBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+//		gBagConstraints.gridx = 1;
+//		gBagConstraints.gridy = 6;
+//		gBagConstraints.gridwidth = 4;
+//		gBagConstraints.gridheight = 1;
+//		gBagConstraints.weightx = 0.1;
+//		gBagConstraints.weighty = 0.1;
+//		gBagConstraints.anchor = GridBagConstraints.PAGE_END;
+//		myFrame.getContentPane().add( green, gBagConstraints );
+//		
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		
+		board.addMouseListener(this);
+		/*
+		myFrame.setLayout(new FlowLayout());
+		
+		myFrame.add( board );
+		myFrame.add( blue );
+		myFrame.add( yellow );
+		myFrame.add( red );
+		myFrame.add( green );
+		*/
+		this.pack();
+		this.setVisible(true);
+		
+	}
+	
+	private static void createAndShowGUI() {
+		
+		Blokus blokus = new Blokus();
+		
+		Image im = null;
+		try {
+			im = ImageIO.read(blokus.getClass().getResource("blokus-icon.png"));
+		} catch ( IOException ex ) {
+			System.out.println("Error");
+		}
+		
+		blokus.setIconImage(im);
+		
+		return;
+	}
+	
+	private void nextTurn() {
+		
+//		while ( true ) {	
+//			
+//			/* Switch the active player. Turns follow this order: 
+//			 * 1. Blue
+//			 * 2. Yellow
+//			 * 3. Red
+//			 * 4. Green
+//			 */
+//			if ( (turnCounter % 4) == 0 ) {
+//				activePlayer = blue;
+//			}
+//			else if ( (turnCounter % 4) == 1) {
+//				activePlayer = yellow;
+//			}
+//			else if ( (turnCounter % 4) == 2 ) {
+//				activePlayer = red;
+//			}
+//			else {
+//				activePlayer = green;
+//			}
+//			
+//			System.out.println(""+Player.colorToString(activePlayer.getColor())+"'s turn!");
+//			
+//			/* displayRemainingShapes( activePlayer );*/
+// 
+////			System.out.print("Use what piece?");
+//			String input = "";
+////			try {
+////				input = br.readLine();
+////				
+////			} catch (IOException ioe) {
+////				System.out.println( "IO error");
+////				continue;
+////			}
+////			if (input.equals("q")) {
+////				break;
+////			}
+////			
+////			int piece = Integer.parseInt(input);
+//			
+//			
+//			System.out.print("Place where?");
+//			int x;
+//			int y;
+//			
+//			try {
+//				System.out.print("X:");
+//				input = br.readLine();
+//				x = Integer.parseInt(input);
+//				System.out.print("Y:");
+//				input = br.readLine();
+//				y = Integer.parseInt(input);
+//			} catch (IOException ioe ) {
+//				System.out.println( "IO error" );
+//				continue;
+//			}
+//			
+//			int piece = activePlayer.getSelection();
+//			
+//			if ( piece < 0 || piece >= activePlayer.getRemainingShapes().size() ) {
+//				System.out.println("Invalid Piece or no selection. Try again.");
+//				continue;
+//			}
+//			
+//			Shape shape = activePlayer.getRemainingShapes().get(piece);
+//			
+//			shape.setOrigin(new Coordinate(x,y));
+//			
+//			if ( !board.addShape(shape) ) {
+//				System.out.println("Invalid Location");
+//				
+//				/* Continue without advancing the turn counter. */
+//				continue;
+//			}
+//			else {
+//				activePlayer.removeShape(piece);
+//			}
+//			
+//			/*board.drawBoard();*/
+//			myFrame.repaint();
+//			
+//			/* Progress to next turn. */
+//			turnCounter++;
+//		}
+		/*
+		blue.remainingShapes.get(0);
+		yellow.remainingShapes.get(0);
+		red.remainingShapes.get(0);
+		green.remainingShapes.get(0);
+		
+		Color remainingShapes[][] = new Color[5][110];
+		
+		for ( int x = 0; x < 5; x++ ) {
+			for ( int y = 0; y < 110; y++ ) {
+				remainingShapes[x][y] = Color.NONE;
+			}
+		}
+		
+		int shapeNum = 0;
+		for (Shape shape : blue.getRemainingShapes()) {
+			
+			for (Coordinate coordinate : shape.myCoordinates) {
+				remainingShapes[coordinate.myX][coordinate.myY + (shapeNum*5)] = coordinate.myColor;
+			}
+			
+			shapeNum++;
+		}
+		
+		System.out.println("Blue:");
+		for ( int y = 0; y < 110; y++ ) {
+			System.out.println("----------------");
+			System.out.print("|");
+			for ( int x = 0; x < 5; x++ ) {
+				switch (remainingShapes[x][y]) {
+				case NONE:
+					System.out.print(" ");
+					break;
+				case BLUE:
+					System.out.print("B");
+					break;
+				case YELLOW:
+					System.out.print("Y");
+					break;
+				case RED:
+					System.out.print("R");
+					break;
+				case GREEN:
+					System.out.print("G");
+					break;
+				default:
+					System.out.print(" ");
+				}
+				System.out.print("|");
+			}
+			System.out.println("");
+		}
+		*/
+		/*
+		ArrayList<Coordinate> line = new ArrayList<Coordinate>();
+		line.add(new Coordinate(0,0,Color.RED));
+		line.add(new Coordinate(0,1,Color.RED));
+		line.add(new Coordinate(0,2,Color.RED));
+		
+		Shape lineShape = new Shape(line,new Coordinate(5,0));
+		
+		ArrayList<Coordinate> fourT = new ArrayList<Coordinate>();
+		fourT.add(new Coordinate(1,0,Color.BLUE));
+		fourT.add(new Coordinate(0,1,Color.BLUE));
+		fourT.add(new Coordinate(1,1,Color.BLUE));
+		fourT.add(new Coordinate(2,1,Color.BLUE));
+		
+		Shape fourTShape = new Shape(fourT, new Coordinate(10,10));
+		
+		ArrayList<Coordinate> dot = new ArrayList<Coordinate>();
+		dot.add(new Coordinate(0,0,Color.BLUE));
+		
+		Shape dotShape = new Shape(dot, new Coordinate(0,0));
+		
+		Board board = new Board();
+		
+		board.addShape(lineShape);
+		board.addShape(fourTShape);
+		
+		boolean validate = board.ValidateShapeLocation(dotShape);
+		
+		board.addShape(dotShape);
+		
+		
+		
+		if (validate) System.out.println("True");
+		else System.out.println("False");
+		board.drawBoard();
+		*/
+		
+		
+	}
+	
+	public void mouseClicked( MouseEvent event ) {
+		
+//		/* Only need to do anything if the board has been clicked. */
+//		if ( board.isNewEvent() != true ) {
+//			return;
+//		}
+		
+		/* Switch the active player. Turns follow this order: 
+		 * 1. Blue
+		 * 2. Yellow
+		 * 3. Red
+		 * 4. Green
+		 */
+		if ( (turnCounter % 4) == 0 ) {
+			activePlayer = blue;
+		}
+		else if ( (turnCounter % 4) == 1) {
+			activePlayer = yellow;
+		}
+		else if ( (turnCounter % 4) == 2 ) {
+			activePlayer = red;
+		}
+		else {
+			activePlayer = green;
+		}
+		
+		int piece = activePlayer.getSelection();
+		
+		if ( piece < 0 || piece >= activePlayer.getRemainingShapes().size() ) {
+			System.out.println("Invalid Piece or no selection. Try again.");
+			return;
+		}
+		
+		Shape shape = activePlayer.getRemainingShapes().get(piece);
+		
+		/* Adjust the shape's squares relative coordinates to be based on the selected square */
+		shape.changeOrigin(activePlayer.getSelectedSquare());
+		
+		/* Now put the origin at a specific spot on the board. */
+		shape.setOrigin(board.getLastClick());
+		
+		
+		if ( !board.addShape(shape) ) {
+			System.out.println("Invalid Location");
+			
+			/* Continue without advancing the turn counter. */
+			
+			/* Correct the origin back to the top left corner. */
+			shape.moveOriginToTopLeftCorner();
+			
+			return;
+		}
+		else {
+			activePlayer.removeShape(piece);
+		}
+		
+		Player tempPlayer;
+		
+		/* Progress to the next player that has a move. */
+		do {
+		
+			/* Progress to next turn. */
+			turnCounter++;
+			
+			/* Switch the active player. Turns follow this order: 
+			 * 1. Blue
+			 * 2. Yellow
+			 * 3. Red
+			 * 4. Green
+			 */
+			if ( (turnCounter % 4) == 0 ) {
+				tempPlayer = blue;
+			}
+			else if ( (turnCounter % 4) == 1) {
+				tempPlayer = yellow;
+			}
+			else if ( (turnCounter % 4) == 2 ) {
+				tempPlayer = red;
+			}
+			else {
+				tempPlayer = green;
+			}
+			
+					
+	
+		
+		} while ( !playerHasRemainingMoves(tempPlayer) && tempPlayer != activePlayer);
+		
+		activePlayer = tempPlayer;
+		
+		if ( !playerHasRemainingMoves(activePlayer) ) {
+			
+			class ScoreCard {
+			
+				int score;
+				Player player;
+			
+			};
+			
+			ScoreCard redScore = new ScoreCard();
+			ScoreCard blueScore = new ScoreCard();
+			ScoreCard yellowScore = new ScoreCard();
+			ScoreCard greenScore = new ScoreCard();
+			
+			turnIndicator.setCurrentTurn(Color.NONE);
+			redScore.score = board.getNumberOfTiles(Color.RED);
+			redScore.player = red;
+			blueScore.score = board.getNumberOfTiles(Color.BLUE);
+			blueScore.player = blue;
+			yellowScore.score = board.getNumberOfTiles(Color.YELLOW);
+			yellowScore.player = yellow;
+			greenScore.score = board.getNumberOfTiles(Color.GREEN);
+			greenScore.player = green;
+			
+			ArrayList<ScoreCard> scores = new ArrayList();
+			scores.add(redScore);
+			scores.add(blueScore);
+			scores.add(yellowScore);
+			scores.add(greenScore);
+			
+			ScoreCard bestScore = new ScoreCard();
+			bestScore.score = 0;
+			bestScore.player = new Player(Color.NONE);
+			
+			for (ScoreCard score: scores ) {
+			
+				if (score.score > bestScore.score ) {
+					bestScore.score = score.score;
+					bestScore.player = score.player;
+				}
+			}	
+			
+			System.out.println("Red Tiles: " + redScore.score + "\n" +
+							 	"Blue Tiles: " + blueScore.score + "\n" +
+								"Yellow Tiles: " + yellowScore.score + "\n" +
+								"Green Tiles: " + greenScore.score );
+			System.out.println("Winner is: " + Player.colorToString(bestScore.player.getColor()));
+		}
+		else {	
+			turnIndicator.setCurrentTurn(activePlayer.getColor());
+			
+		}
+		
+		/* Redraw new configuration. */
+		this.repaint();
+	}
+	
+	/* Satisfy the MouseListener function definitions. */
+	public void mousePressed( MouseEvent e ){}
+	public void mouseReleased( MouseEvent e ){}
+	public void mouseEntered( MouseEvent e ){}
+	public void mouseExited( MouseEvent e ){}
+	
+	/* Name:		actionPerformed()
+	 * Description:	Figures out the action source to handle it appropriately.
+	 * 				Handles the load and save menu items.
+	 */
+	public void actionPerformed( ActionEvent event ) {
+		
+		/* Handle the save item. */
+		if ( event.getSource() == saveItem ) {
+			
+			SaveObject saveObject = new SaveObject();
+			saveObject.blue = new Player(blue);
+			saveObject.yellow = new Player(yellow);
+			saveObject.red = new Player(red);
+			saveObject.green = new Player(green);
+			saveObject.board = new Board(board);
+			saveObject.turnCounter = turnCounter;
+			
+			JFileChooser fileChooser = new JFileChooser();
+			
+			int returnVal = fileChooser.showSaveDialog(this);
+			
+			if ( returnVal == JFileChooser.APPROVE_OPTION ) {
+				File file = fileChooser.getSelectedFile();
+				try {
+					saveGame(saveObject,file.getPath() );	
+				}
+				catch ( IOException e ){
+					System.out.println("Invalid file");
+					return;
+				}
+			}
+		} 
+		
+		/* Handle load item. */
+		else if ( event.getSource() == loadItem ) {
+			
+			JFileChooser fileChooser = new JFileChooser();
+			
+			int returnVal = fileChooser.showOpenDialog(this);
+			if ( returnVal == JFileChooser.APPROVE_OPTION ) {
+				File file = fileChooser.getSelectedFile();
+				SaveObject loadedGame;
+				
+				try {
+					loadedGame = loadGame( file.getPath() );
+				}
+				catch ( IOException e ) {
+					System.out.println("Invalid file");
+					return;
+				}
+				catch ( ClassNotFoundException e ) {
+					System.out.println("Invalid file");
+					return;
+				}
+				
+				this.getContentPane().remove(blue);
+				this.getContentPane().remove(yellow);
+				this.getContentPane().remove(red);
+				this.getContentPane().remove(green);
+				this.getContentPane().remove(board);
+				this.getContentPane().remove(turnIndicator);
+				
+				blue = new Player(loadedGame.blue);
+				yellow = new Player(loadedGame.yellow);
+				red = new Player(loadedGame.red);
+				green = new Player(loadedGame.green);
+				turnCounter = loadedGame.turnCounter;
+				
+//				this.getContentPane().add(blue);
+//				this.getContentPane().add(yellow);
+//				this.getContentPane().add(red);
+//				this.getContentPane().add(green);
+				/* Switch the active player. Turns follow this order: 
+				 * 1. Blue
+				 * 2. Yellow
+				 * 3. Red
+				 * 4. Green
+				 */
+				if ( (turnCounter % 4) == 0 ) {
+					activePlayer = blue;
+				}
+				else if ( (turnCounter % 4) == 1) {
+					activePlayer = yellow;
+				}
+				else if ( (turnCounter % 4) == 2 ) {
+					activePlayer = red;
+				}
+				else {
+					activePlayer = green;
+				}
+				board = new Board(loadedGame.board);
+				turnIndicator.setCurrentTurn(activePlayer.getColor());
+				
+				setUpGUI();
+				
+				this.repaint();
+				
+			}
+		}
+	}
+	
+	/*
+	 * Name: playerHasReminaingMoves
+	 * Description: Returns true if the player provided still has valid moves
+	 * with his remaining pieces.
+	 */
+	private boolean playerHasRemainingMoves( Player player ) {
+		
+		ArrayList<Shape> remainingShapes = player.getRemainingShapes();
+		
+		/* Check if there is a possible spot for any shape */
+		for (Shape remainingShape: remainingShapes ) {
+			
+			/* Try for each rotation */
+			for ( int rotation = 0; rotation < 4; rotation++ ) {
+				
+				remainingShape.rotateClockwise();
+				
+				if (board.shapeHasSpot(remainingShape)) {
+					
+					return true;
+				}
+				
+			}
+			
+		}
+		
+		return false;
+	}
+	
+	/* TODO: This is now in player object, should be removed here? */
+	public static void displayRemainingShapes( Player player ) {
+		
+		Color remainingShapes[][] = new Color[5][110]; /* Stores the grid of colors that will be displayed. */
+		
+		/* Initialize the grid to all 0's. */
+		for ( int x = 0; x < 5; x++ ) {
+			for ( int y = 0; y < 110; y++ ) {
+				remainingShapes[x][y] = Color.NONE;
+			}
+		}
+		
+		/* Fill in the grid. Each shape gets a height of 5 spaces. Therefore a new shape starts every 5 lines. */
+		int shapeNum = 0;
+		for (Shape shape : player.getRemainingShapes()) {
+			
+			for (Coordinate coordinate : shape.myCoordinates) {
+				remainingShapes[coordinate.myX][coordinate.myY + (shapeNum*5)] = coordinate.myColor;
+			}
+			
+			shapeNum++;
+		}
+		
+		/* Print the grid that was just filled in. */
+		System.out.println(colorToString(player.getColor()) + ":");
+		shapeNum = 0;
+		for ( int y = 0; y < (player.getRemainingShapes().size() * 5); y++, shapeNum++ ) {
+			
+			/* Put a number above each shape. A shape is every 5 lines. */
+			if ( (shapeNum % 5) == 0 ) {
+				System.out.println((shapeNum/5) + ":");
+			}
+			
+			System.out.println("----------------");
+			System.out.print("|");
+			for ( int x = 0; x < 5; x++ ) {
+				switch (remainingShapes[x][y]) {
+				case NONE:
+					System.out.print(" ");
+					break;
+				case BLUE:
+					System.out.print("B");
+					break;
+				case YELLOW:
+					System.out.print("Y");
+					break;
+				case RED:
+					System.out.print("R");
+					break;
+				case GREEN:
+					System.out.print("G");
+					break;
+				default:
+					System.out.print(" ");
+				}
+				System.out.print("|");
+			}
+			System.out.println("");
+		}
+	}
+	
+	public static String colorToString( Color color ) {
+		
+		switch ( color ) {
+		case BLUE:
+			return "BLUE";
+		case YELLOW:
+			return "YELLOW";
+		case RED:
+			return "RED";
+		case GREEN:
+			return "GREEN";
+		case NONE:
+		default:
+			return "NONE";
+		}
+	}
+	
+	public static void saveGame( SaveObject saveObject, String fileName ) throws IOException {
+		
+		FileOutputStream fileOutputStream = new FileOutputStream( fileName );
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream( fileOutputStream );
+		objectOutputStream.writeObject(saveObject);
+		System.out.println(fileName);
+		objectOutputStream.close();
+	}
+	
+	public static SaveObject loadGame( String fileName ) throws IOException, ClassNotFoundException {
+		
+		FileInputStream fileInputStream = new FileInputStream( fileName );
+		ObjectInputStream objectInputStream = new ObjectInputStream( fileInputStream );
+		SaveObject saveObject = (SaveObject) objectInputStream.readObject();
+		objectInputStream.close();
+		return saveObject;
+	}
+	
+	public static void main (String[] args) {
+		 /* Schedule a job for the event-dispatcher thread:
+		  * creating and showing the GUI.
+		  */
+		javax.swing.SwingUtilities.invokeLater( new Runnable() { 
+			public void run() {
+				createAndShowGUI();
+			}
+			
+		});
+		 
+	}
+}
